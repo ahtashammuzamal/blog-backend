@@ -1,4 +1,4 @@
-# Blog API
+# Blog Backend
 
 Backend practice project for a simple blog platform built with Node.js, Express, and MongoDB. The goal is to learn how to structure an Express API with authentication, author/admin roles, and CRUD endpoints for blog posts.
 
