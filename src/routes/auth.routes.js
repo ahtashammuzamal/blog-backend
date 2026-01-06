@@ -16,6 +16,4 @@ router.post("/login", login);
 router.get("/my-profile", auth, myProfile);
 router.post("/logout-all", auth, logoutAll);
 
-// admin routes
-
 export default router;

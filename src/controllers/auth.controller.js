@@ -27,11 +27,7 @@ export const signUp = async (req, res) => {
 
     res.status(201).json({
       message: "User successfully created.",
-      user: {
-        id: user._id,
-        email: user.email,
-        role: user.role,
-      },
+      user,
       token,
     });
   } catch (error) {
@@ -79,7 +75,6 @@ export const login = async (req, res) => {
       token,
     });
   } catch (error) {
-    console.log("Login error", error);
     res.status(500).json({
       success: false,
       message: "Server error during login",
@@ -204,8 +199,6 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    console.log("Hi");
-    console.log(req.params.id);
     const author = await User.findByIdAndDelete(req.params.id);
 
     if (!author) {
