@@ -1,3 +1,4 @@
+import { Blog } from "../models/blog.model.js";
 import { User } from "../models/user.model.js";
 import { isValidUpdate } from "../utils/is-valid-update.js";
 
@@ -70,11 +71,14 @@ export const login = async (req, res) => {
 
     res.status(200).json({
       success: true,
-      message: "Login successful",
+      message: "User login successfully",
       user,
       token,
     });
   } catch (error) {
+    if (error.message === "Unauthorized") {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
     res.status(500).json({
       success: false,
       message: "Server error during login",
@@ -88,13 +92,14 @@ export const login = async (req, res) => {
 // @access Private
 export const myProfile = async (req, res) => {
   const { user } = req;
+
+  const blogs = await Blog.find({ author: req.user.id });
+
   try {
     res.status(200).json({
       success: true,
-      profile: {
-        name: user.name,
-        email: user.email,
-      },
+      user,
+      blogs,
     });
   } catch (error) {
     res.status(500).json({

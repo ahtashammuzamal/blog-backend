@@ -90,7 +90,7 @@ userSchema.statics.isValidUser = async function (email, password) {
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new Error("Unauthorized.");
+    throw new Error("Unauthorized");
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
