@@ -10,10 +10,14 @@ const app = express();
 // middleware
 app.use(express.json()); // parse JSON
 
-// fixing CORS error on frontend
+// fix: CORS error on frontend
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "https://wordsmith-blog.vercel.app/",
+      "http://localhost:5173",
+      "http://localhost:3000",
+    ],
     credentials: true,
   })
 );
