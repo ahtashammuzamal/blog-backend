@@ -14,7 +14,7 @@ app.use(express.json()); // parse JSON
 app.use(
   cors({
     origin: [
-      "https://wordsmith-blog.vercel.app/",
+      "https://wordsmith-blog.vercel.app",
       "http://localhost:5173",
       "http://localhost:3000",
     ],
